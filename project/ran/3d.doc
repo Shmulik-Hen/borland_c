@@ -1,0 +1,164 @@
+		     Computer Graphics - Exercise 2
+-----------------------------------------------------------------------------
+
+written by: iron 	ran 	023914260  	~iron
+	    sholkis 	moshe   059764993	"shool
+
+-----------------------------------------------------------------------------
+
+IMPORTENT NOTE:
+---------------
+this program was written as a 3d-graphic generator.
+the 3d-generator is intended to be used as the main 3d-project.
+this pre-version is a limited version of the project.
+
+SO - SORRY FOR THE INCONVINIANCE BUT WE DIDN'T IMPLEMNTED (YET) HELP SCREEN.
+
+-----------------------------------------------------------------------------
+
+keys to move the helicopter:
+----------------------------
+'d' - down nose of the helicopter.
+'u' - up nose of the helicopter.
+'+' - zoom in.
+'-' - zoom out.
+'/' - tilt left.
+'*' - tilt right.
+'8' - up.                  -+
+'2' - down.                 | num lock arrow keyes.
+'4' - left.                 |
+'6' - right.               -+
+
+'q' - quit.
+
+-----------------------------------------------------------------------------
+
+files & contents:
+-----------------
+main.c 		- main program for the exercise.
+int_math.c (.h) - integer mathematical library.
+3d_util.c (.h)	- specific & general graphic functions.
+intrprtr.c (.h) - main interpreter/executer for the program.
+util.c (.h)	- general utility & memory allocation utility.
+types.def	- definition of types for the project.
+
+film.dat	- film file for the helicopter.
+
+-----------------------------------------------------------------------------
+
+the program & the film file shows the basic 3D operations with matrixes
+& hirarcial graphic tree.
+
+all the mathematical calculations is done with integer values !!.
+(it's about 4 times faster then F.P. - we mesured on benchmark program).
+
+the main program is a "command interpreter" that reads an input file in
+our graphic language,crates the polygons,element & film data structure &
+then run the film commands.
+the language we implemented gives us the ability to rotate/move/zoom elements
+anywere on the graphic tree & to interact with event keyes.
+
+
+language to build 3d structures:
+--------------------------------
+declerations of polygons:
+
+   #p poly_name  (x,y,z),
+		 (x,y,z),
+		 .
+		 .
+		 .
+   #p poly_name  (x,y,z),
+		 (x,y,z),
+		 .
+		 .
+		 .
+   .
+   .
+   .
+
+each triplet is a 3D cordinate.
+
+
+declerations of elements & the associated polygons:
+
+   #e e_path	deg_x,deg_y,deg_z,off_x,off_y,off_z,zoom
+      poly_name	color
+      poly_name color
+      .
+      .
+      .
+
+   #e e_path	deg_x,deg_y,deg_z,off_x,off_y,off_z,zoom
+      poly_name	color
+      poly_name color
+      .
+      .
+      .
+
+the "deg_x,deg_y,deg_z,off_x,off_y,off_z,zoom" are the initial parameters to
+rotate , move & zoom - i.e: we build an eqvivalent matrix for it.
+
+
+labguage of the film:
+---------------------
+each film shows the syntax we used (it's not final !!).
+
+delay delay		- delay the film operation for "delay" miliseconds.
+end			- initiated end of film.
+goto label		- skip to "label" in the film.
+label label		- declare "label" in the film.
+attrib e_path attrib	- operate attrib on te element.
+event key label		- skip to "label" after key is pressed.
+var var_name value	- create "var_name" variable with value.
+add var_name value	- add value to "var_name".
+jzero var_name label	- branch to "label" if "var_name"<1.
+showall			- update screen & flip pages.
+
+
+the graphic data structure:
+---------------------------
+the graphic data structure is basically a tree. each element is linked with
+his sons & parent in a way that creates a tree. each element can have
+un-limited number of sons & polygon associated with it.
+
+the tree module:
+----------------
+regular tree:			our tree:
+
+	     +---+			   +---+
+	     |   |			   |   |
+	     |   |			   |   |
+	     +---+			   +---+
+	     ||  |			     |
+	     ||..|			     |
+       +-----+|  +---+		       +-----+
+       |      |      |		       |
+      \|/    \|/    \|/		      \|/
+     +---+  +---+  +---+	     +---+  +---+  +---+
+     |   |  |   |..|   |	     |   |->|   |->|   |
+     |   |  |   |  |   |             |   |  |   |..|   |
+     +---+  +---+  +---+	     +---+  +---+  +---+
+      ...    ...    ...		      ...    ...    ...
+
+
+each element in the tree is linked to other elemente in the same depth & son
+element in lower depth.
+
+each element has a diffrent link to a linked list of polygons to be drawed
+for that element.
+
+polygons:
+---------
+polygons are linked with linked list for the interpreter conviniant.
+
+
+		typical connection of polygons to element.
+		------------------------------------------
+		corrupted
+		------------------------------------------
+
+
+thats about it.
+
+ran & moshe.

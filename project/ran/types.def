@@ -1,0 +1,235 @@
+/****************************************************************************
+*                                                                           *
+* SUBJECT:	Computer Graphics .                                         *
+* --------                                                                  *
+*                                                                           *
+* TITLE:        Data Type Definitions.                                      *
+* ------                                                                    *
+*                                                                           *
+* FILE:		types.def                                                   *
+* -----                                                                     *
+*                                                                           *
+* WRITTEN BY:	Iron Ran	023914260	"iron"                      *
+* -----------	Sholkis Moshe   059764993	"shool"                     *
+*                                                                           *
+* UPDATES:	First Writing	18/11/94                                    *
+* --------      Modify #1	26/12/94	                            *
+*		Modify #2	03/01/95	"Z Sort"                    *
+*		Modify #3	21/01/95	"Normal Hiding"             *
+*                                                                           *
+*****************************************************************************
+*                                                                           *
+* DESCRIPTION:	This file contain all data definitions needed to 3d         *
+* ------------	graphics project.                                           *
+*                                                                           *
+****************************************************************************/
+
+
+#ifndef	__TYPES_DEF
+#define	__TYPES_DEF
+
+#define	ON		1
+#define	OFF		0
+
+
+/****************************************************************************
+*                                                                           *
+* Data Types:                                                               *
+*                                                                           *
+****************************************************************************/
+
+#define	X_	0		// "x" cord index
+#define	Y_	1		// "y" cord index
+#define	Z_	2		// "z" cord index
+#define	O_	3		// "offset" index
+
+/*********************************
+* (x,y,z) vector type definition *
+*********************************/
+
+typedef long VECTOR[3];
+
+/*********************************
+* (x,y) screen cordinates	 *
+*********************************/
+
+typedef int CORD_XY[2];
+
+
+/*****************************
+* 4x4 matrix type definition *
+*****************************/
+
+typedef	long MATRIX[4][4];
+
+/*************************
+* vector & matrix macros *
+*************************/
+
+#define copy_matrix(s,t)	memcpy(t,s,sizeof(MATRIX))
+#define copy_vector(s,t)	memcpy(t,s,sizeof(VECTOR))
+#define	copy_attrib(s,t)	memcpy(&t,&s,sizeof(ATTRIB))
+
+
+/******************
+* typical strings *
+******************/
+
+#define MAX_NAME 	10
+typedef char NAME[MAX_NAME+1];
+
+
+#define MAX_LINE 	100
+typedef char LINE[MAX_LINE+1];
+
+
+typedef unsigned long 	ULONG;
+typedef unsigned int  	UINT;
+typedef long 	      	FRUC;
+
+
+/***************************
+* color palette definition *
+***************************/
+
+#define	R_	0
+#define	G_	1
+#define	B_	2
+
+typedef char PALETTE[3];
+
+
+/************************
+*                       *
+* Data-Base defintions  *
+*                       *
+************************/
+
+/****************************
+* attribute type definition *
+****************************/
+
+typedef struct ATTR_
+	    {
+	     int		deg_x;		/* "x" degree of rotation. */
+	     int		deg_y;	  	/* "y" degree of rotation. */
+	     int		deg_z;		/* "z" degree of rotation. */
+	     long		off_x;		/* "x" offset.             */
+	     long		off_y;		/* "Y" offset.             */
+	     long		off_z;		/* "z" offset.             */
+	     long		zoom;		/* zoom factor.            */
+	    }
+	    ATTRIB;
+
+/***************************
+* viewport type definition *
+***************************/
+
+typedef struct
+	    {
+	     int		left;		/* left "x" cordinate 	*/
+	     int		right;	  	/* right "c" cordinate	*/
+	     int		top;		/* top "y" cordinate	*/
+	     int		bottom;		/* bottom "y" cordinate	*/
+	    }
+	    VIEWPORT;
+
+/**************************
+* polygon type definition *
+**************************/
+
+typedef struct POLYGON_
+	    {
+	     NAME 		name;
+	     struct POLYGON_ 	*next;
+	     VECTOR 		fill;		/* fill point.             */
+	     VECTOR		normal;		/* normal to surfice	   */
+	     int 		vector_no;
+	     VECTOR 		vector[]; 	/* vectors of polygon.     */
+	    }
+	    POLYGON;
+
+/*************************************
+* polygon of element type definition *
+*************************************/
+
+
+typedef struct POLY_ELEM_
+	    {
+	     struct POLY_ELEM_ 	*next;
+	     int 		color;
+	     POLYGON 		*polygon;
+	     MATRIX		draw_mat;		/* drawing matrix.         */
+	     struct POLY_ELEM_	*next_list;		/* poly-elem queue       */
+	     struct POLY_ELEM_	*list;			/* poly-elem list	 */
+	     VECTOR		fill;			/* polygon fill point	 */
+	     VECTOR		normal;			/* normal to surfice */
+	     int		hide_normal;		/* flag to hide surfice */
+	     long 		depth;			/* depth of polygon */
+	    }
+	    POLY_ELEM;
+
+
+
+/**************************
+* element type definition *
+**************************/
+
+typedef struct ELEM_
+	    {
+	     NAME 		name;
+	     int 		active_flag;
+	     int 		dirty;
+	     MATRIX		mat;		/* local matrix.	*/
+	     MATRIX		draw_mat;	/* drawing matrix.      */
+	     ATTRIB		attrib;		/* attribute of matrix.	*/
+	     struct ELEM_ 	*next;
+	     struct ELEM_ 	*son;
+	     POLY_ELEM 		*poly_list;
+	    }
+	    ELEMENT;
+
+
+/***********************
+* film type definition *
+***********************/
+
+typedef struct FILM_
+	    {
+	     int 		command;
+	     struct FILM_	*next;
+
+				union
+				{
+				 NAME		var_name;
+				 struct FILM_	*var;
+				 ELEMENT 	*element;
+				 char 		event_key;
+				 int 		delay;
+				 int 		color;
+				 int		value;
+				 FRUC		f_value;
+				 VECTOR		vector;
+
+				}
+				arg1;
+
+				union
+				{
+				 NAME 		label;
+				 struct FILM_ 	*back;
+				 struct FILM_	*var;
+				 ELEMENT	*element;
+				 ATTRIB		attrib;
+				 PALETTE 	palette;
+				 VIEWPORT	viewport;
+				 VECTOR		vector;
+				 int		first_value;
+				}
+				arg2;
+	    }
+	    FILM;
+
+#endif
+
+

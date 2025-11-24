@@ -1,0 +1,259 @@
+##--------------------------------------------------------------------------
+
+  screen design
+
+##--------------------------------------------------------------------------
+
+#s back 126
+#s box 255 0,0,99,99
+#s box 255 100,100,199,199
+#s box 255 200,0,299,99
+
+
+
+
+
+##--------------------------------------------------------------------------
+
+  polygons declarations:
+
+##--------------------------------------------------------------------------
+
+#p side (-20,-20,0),(20,-20,0)(20,20,0)(-20,20,0)
+
+##--------------------------------------------------------------------------
+
+  hirarchial structure of the drawing:
+
+##--------------------------------------------------------------------------
+
+#e first                0,0,0,0,0,0,0.2
+#e first/main		0,0,0,100,0,100,0.7
+#e first/main/s_1 	0,0,0,0,0,20,1
+   side		7 (0,0,1)  1
+#e first/main/s_2 	0,0,0,0,0,-20,1
+   side		7 (0,0,-1) 1
+#e first/main/s_3 	0,128,0,-20,0,0,1
+   side		7 (0,0,1) 1
+#e first/main/s_4 	0,128,0,20,0,0,1
+   side		7 (0,0,-1)  1
+#e first/main/s_5 	128,0,0,0,-20,0,1
+   side		7 (0,0,1) 1
+#e first/main/s_6 	128,0,0,0,20,0,1
+   side		7 (0,0,-1)  1
+
+#e first/main2		0,0,0,100,0,-100,1
+#e first/main2/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e first/main2/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e first/main2/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e first/main2/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e first/main2/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e first/main2/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e first/main3		0,0,0,-100,0,-100,1
+#e first/main3/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e first/main3/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e first/main3/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e first/main3/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e first/main3/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e first/main3/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e first/main4		0,0,0,-100,0,100,1
+#e first/main4/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e first/main4/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e first/main4/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e first/main4/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e first/main4/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e first/main4/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e first/main5		0,0,0,0,0,0,1
+#e first/main5/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e first/main5/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e first/main5/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e first/main5/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e first/main5/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e first/main5/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e first/main6		0,0,0,-100,0,0,1
+#e first/main6/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e first/main6/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e first/main6/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e first/main6/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e first/main6/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e first/main6/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e second               0,0,0,0,0,0,0.3
+#e second/main		0,0,0,100,0,100,0.7
+#e second/main/s_1 	0,0,0,0,0,20,1
+   side		7 (0,0,1)  1
+#e second/main/s_2 	0,0,0,0,0,-20,1
+   side		7 (0,0,-1) 1
+#e second/main/s_3 	0,128,0,-20,0,0,1
+   side		7 (0,0,1) 1
+#e second/main/s_4 	0,128,0,20,0,0,1
+   side		7 (0,0,-1)  1
+#e second/main/s_5 	128,0,0,0,-20,0,1
+   side		7 (0,0,1) 1
+#e second/main/s_6 	128,0,0,0,20,0,1
+   side		7 (0,0,-1)  1
+
+#e second/main2		0,0,0,100,0,-100,1
+#e second/main2/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e second/main2/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e second/main2/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e second/main2/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e second/main2/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e second/main2/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e second/main3		0,0,0,-100,0,-100,1
+#e second/main3/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e second/main3/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e second/main3/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e second/main3/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e second/main3/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e second/main3/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e second/main4		0,0,0,-100,0,100,1
+#e second/main4/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e second/main4/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e second/main4/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e second/main4/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e second/main4/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e second/main4/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e second/main5		0,0,0,0,0,0,1
+#e second/main5/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e second/main5/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e second/main5/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e second/main5/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e second/main5/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e second/main5/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+#e second/main6		0,0,0,-100,0,0,1
+#e second/main6/s_1 	0,0,0,0,0,20,1
+   side		1  (0,0,1)  1
+#e second/main6/s_2 	0,0,0,0,0,-20,1
+   side		2  (0,0,-1)  1
+#e second/main6/s_3 	0,128,0,-20,0,0,1
+   side		3  (0,0,1)  1
+#e second/main6/s_4 	0,128,0,20,0,0,1
+   side		4  (0,0,-1)  1
+#e second/main6/s_5 	128,0,0,0,-20,0,1
+   side		5  (0,0,1)  1
+#e second/main6/s_6 	128,0,0,0,20,0,1
+   side		6  (0,0,-1)  1
+
+##--------------------------------------------------------------------------
+
+  the film commands:
+
+##--------------------------------------------------------------------------
+
+#f viewmove 0,0,-1000
+#f lightmove 0,0,-1000
+#f trap q end
+
+#f label loop
+
+#f viewport 1,1,98,98
+#f show first
+
+#f viewport 1,101,98,198
+#f attrib first         0,0,0,0,0,0,1
+#f show first
+#f attrib first         0,0,0,0,0,0,1
+
+#f viewport 101,101,198,198
+#f show second
+
+#f viewport 201,1,298,98
+#f attrib second         0,0,0,0,0,0,1
+#f show second
+#f attrib second         0,0,0,0,0,0,1
+
+#f flippage
+
+
+
+#f attrib first/main  -5,5,0,0,0,0,1
+#f attrib first/main2 -5,-5,0,0,0,0,1
+#f attrib first/main3 -5,5,0,0,0,0,1
+#f attrib first/main4 5,5,0,0,0,0,1
+#f attrib first/main5 -5,5,0,0,0,0,1
+#f attrib first/main6 -5,-5,0,0,0,0,1
+
+#f attrib first         0,5,3,0,0,0,1
+
+#f attrib second/main  -5,5,0,0,0,0,1
+#f attrib second/main2 -5,-5,0,0,0,0,1
+#f attrib second/main3 -5,5,0,0,0,0,1
+#f attrib second/main4 5,5,0,0,0,0,1
+#f attrib second/main5 -5,5,0,0,0,0,1
+#f attrib second/main6 -5,-5,0,0,0,0,1
+#f attrib second         0,-15,3,0,0,0,1
+
+#f dotrap
+
+
+##
+#f delay 20
+##
+
+#f goto loop
+
+#f label end
+#f end

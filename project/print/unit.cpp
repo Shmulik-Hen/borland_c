@@ -1,0 +1,282 @@
+/**************************************************************************
+* SUBJECT:    FLIGHT SIMULATOR.                                           *
+*                                                                         *
+* TITLE:      GRADUATION PROJECT.                                         *
+*                                                                         *
+* FILE NAME:  unit.cpp                                                    *
+*                                                                         *
+* PURPOSE:    function definitions for class UNIT.                        *
+**************************************************************************/
+
+#include "unit.h"
+#include "types.def"
+#include "utils.h"
+
+/* sinus definition table */
+
+long SIN[]={     0,   12,   25,   37,   50,   62,   75,   87,
+	       100,  112,  125,  137,  150,  162,  175,  187,
+	       199,  212,  224,  236,  248,  260,  273,  285,
+	       297,  309,  321,  333,  344,  356,  368,  380,
+	       391,  403,  414,  426,  437,  449,  460,  471,
+	       482,  493,  504,  515,  526,  537,  547,  558,
+	       568,  579,  589,  599,  609,  620,  629,  639,
+	       649,  659,  668,  678,  687,  696,  706,  715,
+	       724,  732,  741,  750,  758,  767,  775,  783,
+	       791,  799,  807,  814,  822,  829,  837,  844,
+	       851,  858,  865,  871,  878,  884,  890,  897,
+	       903,  908,  914,  920,  925,  930,  936,  941,
+	       946,  950,  955,  959,  964,  968,  972,  976,
+	       979,  983,  986,  990,  993,  996,  999, 1001,
+	      1004, 1006, 1008, 1010, 1012, 1014, 1016, 1017,
+	      1019, 1020, 1021, 1022, 1022, 1023, 1023, 1023,
+	      1024, 1023, 1023, 1023, 1022, 1022, 1021, 1020,
+	      1019, 1017, 1016, 1014, 1012, 1010, 1008, 1006,
+	      1004, 1001,  999,  996,  993,  990,  986,  983,
+	       979,  976,  972,  968,  964,  959,  955,  950,
+	       946,  941,  936,  930,  925,  920,  914,  908,
+	       903,  897,  890,  884,  878,  871,  865,  858,
+	       851,  844,  837,  829,  822,  814,  807,  799,
+	       791,  783,  775,  767,  758,  750,  741,  732,
+	       724,  715,  706,  696,  687,  678,  668,  659,
+	       649,  639,  630,  620,  610,  599,  589,  579,
+	       568,  558,  547,  537,  526,  515,  504,  493,
+	       482,  471,  460,  449,  437,  426,  414,  403,
+	       391,  380,  368,  356,  344,  333,  321,  309,
+	       297,  285,  273,  260,  248,  236,  224,  212,
+	       199,  187,  175,  162,  150,  137,  125,  112,
+	       100,   87,   75,   62,   50,   37,   25,   12,
+		 0,  -12,  -25,  -37,  -50,  -62,  -75,  -87,
+	      -100, -112, -125, -137, -150, -162, -175, -187,
+	      -199, -212, -224, -236, -248, -260, -273, -285,
+	      -297, -309, -321, -333, -344, -356, -368, -380,
+	      -391, -403, -414, -426, -437, -449, -460, -471,
+	      -482, -493, -504, -515, -526, -537, -547, -558,
+	      -568, -579, -589, -599, -609, -620, -629, -639,
+	      -649, -659, -668, -678, -687, -696, -706, -715,
+	      -724, -732, -741, -750, -758, -767, -775, -783,
+	      -791, -799, -807, -814, -822, -829, -837, -844,
+	      -851, -858, -865, -871, -878, -884, -890, -897,
+	      -903, -908, -914, -920, -925, -930, -936, -941,
+	      -946, -950, -955, -959, -964, -968, -972, -976,
+	      -979, -983, -986, -990, -993, -996, -999,-1001,
+	     -1004,-1006,-1008,-1010,-1012,-1014,-1016,-1017,
+	     -1019,-1020,-1021,-1022,-1022,-1023,-1023,-1023,
+	     -1024,-1023,-1023,-1023,-1022,-1022,-1021,-1020,
+	     -1019,-1017,-1016,-1014,-1012,-1010,-1008,-1006,
+	     -1004,-1001, -999, -996, -993, -990, -986, -983,
+	      -979, -976, -972, -968, -964, -959, -955, -950,
+	      -946, -941, -936, -930, -925, -920, -914, -908,
+	      -903, -897, -890, -884, -878, -871, -865, -858,
+	      -851, -844, -837, -829, -822, -814, -807, -799,
+	      -791, -783, -775, -767, -758, -750, -741, -732,
+	      -724, -715, -706, -696, -687, -678, -668, -659,
+	      -649, -639, -630, -620, -610, -599, -589, -579,
+	      -568, -558, -547, -537, -526, -515, -504, -493,
+	      -482, -471, -460, -449, -437, -426, -414, -403,
+	      -391, -380, -368, -356, -344, -333, -321, -309,
+	      -297, -285, -273, -261, -248, -236, -224, -212,
+	      -199, -187, -175, -162, -150, -137, -125, -112,
+	      -100,  -87,  -75,  -62,  -50,  -37,  -25,  -12,
+		 0,   12,   25,   37,   50,   62,   75,   87,
+	       100,  112,  125,  137,  150,  162,  175,  187,
+	       199,  212,  224,  236,  248,  260,  273,  285,
+	       297,  309,  321,  333,  344,  356,  368,  380,
+	       391,  403,  414,  426,  437,  449,  460,  471,
+	       482,  493,  504,  515,  526,  537,  547,  558,
+	       568,  579,  589,  599,  609,  620,  629,  639,
+	       649,  659,  668,  678,  687,  696,  706,  715,
+	       724,  732,  741,  750,  758,  767,  775,  783,
+	       791,  799,  807,  814,  822,  829,  837,  844,
+	       851,  858,  865,  871,  878,  884,  890,  897,
+	       903,  908,  914,  920,  925,  930,  936,  941,
+	       946,  950,  955,  959,  964,  968,  972,  976,
+	       979,  983,  986,  990,  993,  996,  999, 1001,
+	      1004, 1006, 1008, 1010, 1012, 1014, 1016, 1017,
+	      1019, 1020, 1021, 1022, 1022, 1023, 1023, 1023};
+
+/* cosinus definition */
+
+long *COS=&SIN[128];		/* cos(x) = sin(x+"90")	*/
+
+/* default constructor */
+
+unit::unit()
+{
+}
+
+/* default destructor */
+
+unit::~unit()
+{
+}
+
+/* constructor with parameters */
+
+unit::unit(const long& n)
+{
+ num=n;
+}
+
+/* operator overloading for addition */
+
+unit unit::operator+(const unit& u) const
+{
+ return unit(num+u.num);
+}
+
+/* operator overloading for subtraction */
+
+unit unit::operator-(const unit& u) const
+{
+ return unit(num-u.num);
+}
+
+/* operator overloading for multiplication */
+
+unit unit::operator*(const unit& u) const
+{
+ return unit( ((num>>1)*(u.num>>1))>>8 );
+}
+
+/* operator overloading for division */
+
+unit unit::operator/(const unit& u) const
+{
+ return unit( (num<<10)/u.num );
+}
+
+/* negation operator */
+
+unit unit::operator-() const
+{
+ return unit(num * -1);
+}
+
+/* operator overloading for addition with assignment */
+
+unit& unit::operator+=(const unit& u)
+{
+ num+=u.num;
+ return *this;
+}
+
+/* operator overloading for subtraction with assignment */
+
+unit& unit::operator-=(const unit& u)
+{
+ num-=u.num;
+ return *this;
+}
+
+/* operator overloading for multiplication with assignment */
+
+unit& unit::operator*=(const unit& u)
+{
+ num=((num>>1)*(u.num>>1))>>8;
+ return *this;
+}
+
+/* operator overloading for division with assignment */
+
+unit& unit::operator/=(const unit& u)
+{
+ num=(num<<10)/u.num;
+ return *this;
+}
+
+/* int casting operator */
+
+unit::operator int()
+{
+ return (int)(num>>10);
+}
+
+/* long casting operator */
+
+unit::operator long()
+{
+ return num;
+}
+
+/* comparison operator */
+
+int operator>(const unit& n1,const unit& n2)
+{
+ return(n1.num > n2.num);
+}
+
+/* comparison operator */
+
+int operator>=(const unit& n1,const unit& n2)
+{
+ return(n1.num >= n2.num);
+}
+
+/* comparison operator */
+
+int operator<(const unit& n1,const unit& n2)
+{
+ return(n1.num < n2.num);
+}
+
+/* base 512 modulo operation */
+
+int mod(const long& n)
+{
+ return int(n & 0x01ff);
+}
+
+/* function for returning the absolute value */
+
+unit abs(const unit& u)
+{
+ return unit(u.num>0 ? u.num : u.num* -1);
+}
+
+/* function for returning a sin value of an angle */
+
+unit sin(const unit& u)
+{
+ return unit(SIN[mod(u.num)]);
+}
+
+/* function for returning a cosin value of an angle */
+
+unit cos(const unit& u)
+{
+ return unit(COS[mod(u.num)]);
+}
+
+/* function for converting a string into a fixed-point number */
+
+long convert(const char* s)
+{
+ long temp=0,sign=1,n=0;
+ int index=0;
+ while(s[index])
+   {
+    switch(s[index])
+      {
+       case '-': sign=-1;
+       case '+': break;
+       case '.': n=1;
+		 break;
+       default : temp=temp*10+(long)(s[index]-'0');
+		 n=n*10;
+		 break;
+      }
+    index++;
+   }
+ if(!n) n=1;
+ return(((sign*temp)<<10)/n);
+}
+
+/* function for initializing with data from file */
+
+void unit::read(ifstream& f)
+{
+ LINE line;
+ while(!read_word(f,line));
+ num=convert(line);
+}
