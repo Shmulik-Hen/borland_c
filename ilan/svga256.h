@@ -31,4 +31,4 @@ void setvgapalette(DacPalette256 *PalBuf)
   reg.r_dx = FP_OFF(PalBuf);
   intr(0x10,&reg);
 }
-
+

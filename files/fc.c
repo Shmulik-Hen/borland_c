@@ -33,4 +33,4 @@ printf("the file %s has:\n %d characters\n %d words\n %d lines\n",filename
 		,chrs,words,lines);
 puts("press any key");
 getch();
-}
+}
