@@ -7,8 +7,8 @@
 #include "list.cpp"
 #include "polyelem.h"
 
-class element:public treenode
-      {
+class element : public treenode
+{
 	NAME name;
 	int dirty_flag;
 	int active_flag;
@@ -17,16 +17,18 @@ class element:public treenode
 	matrix rot_mat;
 	list<polygon> planes;
 	friend class ployelem;
-       public:
+
+public:
+
 	NAME parrent;
 	element();
 	~element();
-	element* find_elem(char*);
-	void update(attrib&);
-	friend int elem_comp(const void*);
-	friend void update_tree(element*,matrix,matrix);
-	friend void printall(element*);
-	void read(ifstream&);
+	element *find_elem(char *);
+	void update(attrib &);
+	friend int elem_comp(const void *);
+	friend void update_tree(element *, matrix, matrix);
+	friend void printall(element *);
+	void read(ifstream &);
 	void print();
-      };
+};
 #endif
