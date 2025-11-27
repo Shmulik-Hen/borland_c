@@ -1,44 +1,46 @@
 /**************************************************************************
-* SUBJECT:    FLIGHT SIMULATOR.                                           *
-*                                                                         *
-* TITLE:      GRADUATION PROJECT.                                         *
-*                                                                         *
-* FILE NAME:  unit.h                                                      *
-*                                                                         *
-* PURPOSE:    function declarations for class UNIT.                       *
-**************************************************************************/
+ * SUBJECT:    FLIGHT SIMULATOR.                                           *
+ *                                                                         *
+ * TITLE:      GRADUATION PROJECT.                                         *
+ *                                                                         *
+ * FILE NAME:  unit.h                                                      *
+ *                                                                         *
+ * PURPOSE:    function declarations for class UNIT.                       *
+ **************************************************************************/
 #ifndef _UNIT_H
 #define _UNIT_H
 #include <fstream.h>
 
 class unit
-      {
+{
 	long num;
-       public:
+
+public:
+
 	unit();
 	~unit();
-	unit(const long&);
-	unit operator+(const unit&) const;
-	unit operator-(const unit&) const;
-	unit operator*(const unit&) const;
-	unit operator/(const unit&) const;
+	unit(const long &);
+	unit operator+(const unit &) const;
+	unit operator-(const unit &) const;
+	unit operator*(const unit &) const;
+	unit operator/(const unit &) const;
 	unit operator-() const;
-	unit& operator+=(const unit&);
-	unit& operator-=(const unit&);
-	unit& operator*=(const unit&);
-	unit& operator/=(const unit&);
+	unit &operator+=(const unit &);
+	unit &operator-=(const unit &);
+	unit &operator*=(const unit &);
+	unit &operator/=(const unit &);
 	operator int();
 	operator long();
-	friend int operator>(const unit&,const unit&);
-	friend int operator>=(const unit&,const unit&);
-	friend int operator<(const unit&,const unit&);
-	friend long convert(const char*);
-	friend int mod(const long&);
-	friend unit abs(const unit&);
-	friend unit sin(const unit&);
-	friend unit cos(const unit&);
-	void read(ifstream&);
-      };
+	friend int operator>(const unit &, const unit &);
+	friend int operator>=(const unit &, const unit &);
+	friend int operator<(const unit &, const unit &);
+	friend long convert(const char *);
+	friend int mod(const long &);
+	friend unit abs(const unit &);
+	friend unit sin(const unit &);
+	friend unit cos(const unit &);
+	void read(ifstream &);
+};
 
 const unit UNIT(1024);
 const unit ZERO(0);

@@ -7,23 +7,29 @@
 #include "polygon.h"
 
 class polyelem
-      {
-	static char* memory;
-	static char* current;
-       public:
+{
+	static char *memory;
+	static char *current;
+
+public:
+
 	matrix mat;
-	polygon* poly;
+	polygon *poly;
 	char color;
 	unit depth;
-	polyelem* next;
-	polyelem* nextq;
-	polyelem(){next=NULL;nextq=NULL;};
-	~polyelem(){};
-	void* operator new(size_t);
+	polyelem *next;
+	polyelem *nextq;
+	polyelem()
+	{
+		next = NULL;
+		nextq = NULL;
+	};
+	~polyelem() {};
+	void *operator new(size_t);
 	friend void freemem();
-	friend polyelem* merge(polyelem*,polyelem*);
-	friend polyelem* merge_sort(queue<polyelem>&);
+	friend polyelem *merge(polyelem *, polyelem *);
+	friend polyelem *merge_sort(queue<polyelem> &);
 	void print();
 	void show();
-      };
+};
 #endif

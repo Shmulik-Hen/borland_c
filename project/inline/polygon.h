@@ -6,20 +6,22 @@
 #include <fstream.h>
 
 class polygon
-      {
+{
 	NAME name;
 	friend class polyelem;
-       public:
+
+public:
+
 	int force;
 	char color;
 	vector fill;
 	vector normal;
 	list<vector> points;
-	polygon(){};
-	~polygon(){};
+	polygon() {};
+	~polygon() {};
 	vector find_fill();
-	friend polygon* find_poly(list<polygon>&,char*);
-	friend int poly_comp(const void*);
-	void read(ifstream&);
-      };
+	friend polygon *find_poly(list<polygon> &, char *);
+	friend int poly_comp(const void *);
+	void read(ifstream &);
+};
 #endif

@@ -7,9 +7,10 @@
 #include "list.cpp"
 #include "polyelem.h"
 
-class element:public treenode
-      {
-       public:
+class element : public treenode
+{
+public:
+
 	NAME name;
 	int dirty_flag;
 	int active_flag;
@@ -19,13 +20,13 @@ class element:public treenode
 	list<polygon> planes;
 	friend class ployelem;
 	NAME parrent;
-	element(){};
-	~element(){};
-	element* find_elem(char*);
-	void update(attrib& a){att+=a;};
-	friend int elem_comp(const void*);
-	friend void update_tree(element*,matrix,matrix);
-	void read(ifstream&);
-	void* operator new(size_t);
-      };
+	element() {};
+	~element() {};
+	element *find_elem(char *);
+	void update(attrib &a) { att += a; };
+	friend int elem_comp(const void *);
+	friend void update_tree(element *, matrix, matrix);
+	void read(ifstream &);
+	void *operator new(size_t);
+};
 #endif

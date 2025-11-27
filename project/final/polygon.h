@@ -5,8 +5,9 @@
 #include "types.def"
 
 class polygon
-      {
-       public:
+{
+public:
+
 	NAME name;
 	friend class polyelem;
 	int force;
@@ -14,12 +15,12 @@ class polygon
 	vector fill;
 	vector normal;
 	list<vector> points;
-	polygon(){};
-	~polygon(){};
+	polygon() {};
+	~polygon() {};
 	vector find_fill();
-	friend polygon* find_poly(list<polygon>&,char*);
-	friend int poly_comp(const void*);
-	void read(ifstream&);
-	void* operator new(size_t);
-      };
+	friend polygon *find_poly(list<polygon> &, char *);
+	friend int poly_comp(const void *);
+	void read(ifstream &);
+	void *operator new(size_t);
+};
 #endif

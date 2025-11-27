@@ -1,12 +1,12 @@
 /**************************************************************************
-* SUBJECT:    FLIGHT SIMULATOR.                                           *
-*                                                                         *
-* TITLE:      GRADUATION PROJECT.                                         *
-*                                                                         *
-* FILE NAME:  element.h                                                   *
-*                                                                         *
-* PURPOSE:    function declarations for class ELEMENT.                    *
-**************************************************************************/
+ * SUBJECT:    FLIGHT SIMULATOR.                                           *
+ *                                                                         *
+ * TITLE:      GRADUATION PROJECT.                                         *
+ *                                                                         *
+ * FILE NAME:  element.h                                                   *
+ *                                                                         *
+ * PURPOSE:    function declarations for class ELEMENT.                    *
+ **************************************************************************/
 #ifndef _ELEMENT_H
 #define _ELEMENT_H
 #include "matrix.h"
@@ -16,8 +16,8 @@
 #include "list.cpp"
 #include "polyelem.h"
 
-class element:public treenode
-      {
+class element : public treenode
+{
 	NAME name;
 	int active_flag;
 	attrib att;
@@ -25,14 +25,16 @@ class element:public treenode
 	matrix rot_mat;
 	list<polygon> planes;
 	friend class ployelem;
-       public:
+
+public:
+
 	NAME parrent;
 	element();
 	~element();
-	element* find_elem(char*);
-	void update(attrib&);
-	friend int elem_comp(const void*);
-	friend void update_tree(element*,matrix,matrix);
-	void read(ifstream&);
-      };
+	element *find_elem(char *);
+	void update(attrib &);
+	friend int elem_comp(const void *);
+	friend void update_tree(element *, matrix, matrix);
+	void read(ifstream &);
+};
 #endif

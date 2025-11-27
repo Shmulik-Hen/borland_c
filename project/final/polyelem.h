@@ -6,20 +6,21 @@
 #include "matrix.h"
 #include "polygon.h"
 
-class polyelem:public queue
-      {
-       public:
+class polyelem : public queue
+{
+public:
+
 	matrix mat;
-	polygon* poly;
+	polygon *poly;
 	char color;
 	unit depth;
-	polyelem* next;
-	polyelem(){next=NULL;};
-	~polyelem(){};
-	friend polyelem* merge(polyelem*,polyelem*);
-	friend polyelem* merge_sort();
+	polyelem *next;
+	polyelem() { next = NULL; };
+	~polyelem() {};
+	friend polyelem *merge(polyelem *, polyelem *);
+	friend polyelem *merge_sort();
 	void show();
-	void* operator new(size_t);
+	void *operator new(size_t);
 	friend void pe_free();
-      };
+};
 #endif

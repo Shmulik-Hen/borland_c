@@ -60,7 +60,7 @@ float average()
 {
 	int i,sum;
 	float average;
-	sum=0;                         			
+	sum=0;
 
 	for(i=0;i<10;i++)
 	    sum+=array[i];

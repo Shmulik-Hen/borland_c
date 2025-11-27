@@ -3,8 +3,8 @@
 #include <fstream.h>
 #include "types.def"
 
-int read_word(ifstream&, char*);
-void error(const char* s1, const char* s2 ="");
+int read_word(ifstream &, char *);
+void error(const char *s1, const char *s2 = "");
 void init();
 void init_elements();
 void init_funcs();

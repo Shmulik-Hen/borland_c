@@ -1,23 +1,27 @@
 /*header for this file*/
 
-typedef struct{
-	int x,y;
-	}POINT;
+typedef struct
+{
+	int x, y;
+} POINT;
 
-typedef struct{
-	int top,left,right,bottom;
-	}RECT;
+typedef struct
+{
+	int top, left, right, bottom;
+} RECT;
 
-typedef struct{
+typedef struct
+{
 	unsigned int type;
 	void *next;
-	}OBJECTHEAD;
+} OBJECTHEAD;
 
-typedef struct{
+typedef struct
+{
 	OBJECTHEAD head;
 	RECT frame;
 	char *back;
-	}WINDOW;
+} WINDOW;
 
 #define DROPSHADOW 5
 
@@ -31,8 +35,3 @@ void ArrowCursor(void);
 void WaitCursor(void);
 void FingerCursor(void);
 void MoveMouse(struct POINT *p);
-
-
-
-
-

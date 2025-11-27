@@ -1,31 +1,32 @@
 /**************************************************************************
-* SUBJECT:    FLIGHT SIMULATOR.                                           *
-*                                                                         *
-* TITLE:      GRADUATION PROJECT.                                         *
-*                                                                         *
-* FILE NAME:  list.h                                                      *
-*                                                                         *
-* PURPOSE:    function declarations for class LIST.                       *
-**************************************************************************/
+ * SUBJECT:    FLIGHT SIMULATOR.                                           *
+ *                                                                         *
+ * TITLE:      GRADUATION PROJECT.                                         *
+ *                                                                         *
+ * FILE NAME:  list.h                                                      *
+ *                                                                         *
+ * PURPOSE:    function declarations for class LIST.                       *
+ **************************************************************************/
 #ifndef _LIST_H
 #define _LIST_H
 
-template<class T>
-class list
-      {
+template <class T> class list
+{
 	typedef struct tag_link
-		       {
-			T* item;
-			tag_link* next;
-		       }link;
-	link* head;
-	link* current;
-       public:
+	{
+		T *item;
+		tag_link *next;
+	} link;
+	link *head;
+	link *current;
+
+public:
+
 	list();
 	~list();
-	void insert(T*);
-	T* first();
-	T* next();
-	T* search(int(*comp)(const void*));
-      };
+	void insert(T *);
+	T *first();
+	T *next();
+	T *search(int (*comp)(const void *));
+};
 #endif

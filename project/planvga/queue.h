@@ -3,14 +3,16 @@
 #include <stddef.h>
 
 class queue
-      {
-	static queue* head;
-	static queue* tail;
-	queue* nextq;
-       public:
-	queue(){nextq=NULL;};
-	~queue(){};
+{
+	static queue *head;
+	static queue *tail;
+	queue *nextq;
+
+public:
+
+	queue() { nextq = NULL; };
+	~queue() {};
 	void push();
-	friend queue* pop();
-      };
+	friend queue *pop();
+};
 #endif

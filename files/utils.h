@@ -1,7 +1,7 @@
 #ifndef _UTILS.H
-#define _UTILS.H
+#define _UTILS .H
 #include <point.h>
-void LocToStr(char *s,int x, int y);
+void LocToStr(char *s, int x, int y);
 void keyboard_things();
 void mouse_things();
 void standart_things();

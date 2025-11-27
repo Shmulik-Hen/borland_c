@@ -1,12 +1,12 @@
 /**************************************************************************
-* SUBJECT:    FLIGHT SIMULATOR.                                           *
-*                                                                         *
-* TITLE:      GRADUATION PROJECT.                                         *
-*                                                                         *
-* FILE NAME:  polygon.h                                                   *
-*                                                                         *
-* PURPOSE:    function declarations for class POLYGON.                    *
-**************************************************************************/
+ * SUBJECT:    FLIGHT SIMULATOR.                                           *
+ *                                                                         *
+ * TITLE:      GRADUATION PROJECT.                                         *
+ *                                                                         *
+ * FILE NAME:  polygon.h                                                   *
+ *                                                                         *
+ * PURPOSE:    function declarations for class POLYGON.                    *
+ **************************************************************************/
 #ifndef _POLYGON_H
 #define _POLYGON_H
 #include "vector.h"
@@ -15,10 +15,12 @@
 #include <fstream.h>
 
 class polygon
-      {
+{
 	NAME name;
 	friend class polyelem;
-       public:
+
+public:
+
 	int force;
 	char color;
 	vector fill;
@@ -27,8 +29,8 @@ class polygon
 	polygon();
 	~polygon();
 	vector find_fill();
-	friend polygon* find_poly(list<polygon>&,char*);
-	friend int poly_comp(const void*);
-	void read(ifstream&);
-      };
+	friend polygon *find_poly(list<polygon> &, char *);
+	friend int poly_comp(const void *);
+	void read(ifstream &);
+};
 #endif
